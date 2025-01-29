@@ -20,10 +20,10 @@ const activity = Generators.input(activityInput);
 const modelInput = Inputs.select(['autoregressive'], {label: "models:"})
 const industry = Generators.input(modelInput);
 
-const vectorlInput = Inputs.select(['ticks', 'mosquitoes', "Blacklegged ticks"], {label: "vector:", multiple: 3})
+const vectorlInput = Inputs.select(["Blacklegged ticks", 'Mosquitoes', '...'], {label: "vector:", multiple: 3})
 const vector = Generators.input(modelInput);
 
-const pathogenInput = Inputs.select(['B burgdorferi (Lyme)'], {label: "pathogen:"})
+const pathogenInput = Inputs.select(['B burgdorferi (Lyme)', 'Anaplasmosis', 'Babesiosis'], {label: "pathogen:", multiple: 3})
 const pathogen = Generators.input(pathogenInput);
 ```
 
@@ -50,7 +50,7 @@ const chosen_counties = ['BURLINGTON', 'ALBANY', 'MONTPELIER', 'SWANTON', 'RUTLA
             type: "mercator",
         },
         marks: [
-            Plot.geo(vt_trails, {stroke: "brown", strokeOpacity: 0.2, tip:true}),
+            Plot.geo(vt_trails, {stroke: "brown", strokeOpacity: 0.2}),
             Plot.geo(districts_mesh, {strokeOpacity: 0.2}),
             Plot.geo(lake_champlain, { fill: "lightblue"}),
             Plot.text(districts, Plot.centroid({
